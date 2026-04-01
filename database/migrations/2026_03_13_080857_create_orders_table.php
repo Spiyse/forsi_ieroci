@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->enum('status', ['jauns','samaksats','tiek_parstraadaats','gatavs_sanemt','izsutits','piegadats','atcelts'])->default('jauns');
+            $table->decimal('total_price', 10, 2);
+            $table->text('shipping_address')->nullable();
             $table->timestamps();
         });
     }

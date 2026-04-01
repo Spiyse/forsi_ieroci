@@ -24,6 +24,7 @@ class User extends Authenticatable
         'password',
         'phone',
         'is_admin',
+        'has_licence',
     ];
 
     /**
@@ -46,10 +47,17 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean',
+            'has_licence' => 'boolean',
         ];
     }
     public function isAdmin(): bool
     {
         return $this->is_admin;
+    }
+
+     public function hasLicence(): bool
+    {
+        return $this->has_licence;
     }
 }
